@@ -8,6 +8,10 @@ const userType = gql`
         posts: [Post!]!
         comments: [Comment!]!
     }
+    type LoginResponse {
+        user: User!,
+        token: String!
+    }
 `;
 
 module.exports = {

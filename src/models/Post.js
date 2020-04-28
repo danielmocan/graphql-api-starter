@@ -1,48 +1,14 @@
-// const { database } = require("../data/mongoose.js");
+const mongoose = require( "mongoose" );
 
-const posts = [
-    {
-        id: 3,
-        title: "First post",
-        content: "One of the best first posts",
-        author: 1,
-        comments: [1]
-    },
-    {
-        id: 4,
-        title: "Awesome post",
-        content: "Awesome posts",
-        author: 1,
-        comments: [2]
-    },
-    {
-        id: 5,
-        title: "Awesome post",
-        content: "Awesome posts",
-        author: 2,
-        comments: []
-    },
-];
-  
-class Post {
-  static all() {
-    return posts;
-  }
+const { Schema } = mongoose;
 
-  static findById( id ) {
-      return  posts.find( post => post.id  == id )
-  }
+const postSchema = new Schema( {
+    id: { type: String, required: true, unique: true },
+    author: { type: String, required: true },
+    title: { type: String, requred: true },
+    content: { type: String, required: true },
+    addedDate: { type: String, default: Date.now() },
+    comments: { type: Array },
+} );
 
-  static findByAuthor( authorId ) {
-      return posts.filter( post => post.author == authorId )
-  }
-
-  static findByCommentId( commentId ) {
-    return posts.filter( post => post.comments.includes(id) )
-  }
-
-}
-
-module.exports = {
-  Post,
-};
+module.exports = mongoose.model( "Post", postSchema );

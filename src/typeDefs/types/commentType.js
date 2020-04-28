@@ -4,7 +4,7 @@ const commentType = gql`
     type Comment {
         id: ID!
         content: String!
-        author: User!
+        authorId: User!
         post: Post!
     }
 `;

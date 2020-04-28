@@ -1,12 +1,11 @@
-const { Post } = require("../models/Post");
-const { User } = require("../models/User");
-const { Comment } = require("../models/Comment");
+const { Post } = require("../controllers/Post");
+const { User } = require("../controllers/User");
+const { Comment } = require("../controllers/Comment");
 
 const postResolvers = {
     Query: {
         posts: () => Post.all(),
         post: (parent, args, context, info) =>  {
-            console.log( "context ", parent );
             return Post.findById( args.id )
         }
     },
@@ -24,11 +23,20 @@ const postResolvers = {
         }
     },
     Comment: {
-        author(comment) {
-            return User.findByCommentId( comment.id )
+        async authorId(comment) {
+            return await User.findByCommentId( comment.id )
         },
-        post(comment) {
-            return Post.findByCommentId( comment.id )
+        async post(comment) {
+            const post = await Post.findByCommentId( comment.id );
+            return post;
+        }
+    },
+
+    Mutation: { 
+        async post( parent, args, context, info) {
+            const post = await Post.createPost({ title: args.title, content: args.content, author: context.user.id });
+            await User.addPostId(post.id);
+            return post;
         }
     }
 }

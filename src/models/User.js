@@ -1,34 +1,16 @@
-const users = [
-    {
-        id: 1,
-        firstName: 'Daniel',
-        lastName: 'Mocan',
-        posts: [3, 4],
-        comments: [],
-    },
-    {
-        id: 2,
-        firstName: 'John',
-        lastName: 'Doe',
-        posts: [5],
-        comments: [1, 2],
-    },
-];
-  
-class User {
-  static all() {
-    return users;
-  }
+const mongoose = require( "mongoose" );
 
-  static findById( id ) {
-      return users.find( user => user.id  == id )
-  }
+const { Schema } = mongoose;
 
-  static findByCommentId( id ) {
-      return users.find( user => user.comments.includes(id))
-  }
-}
+const userSchema = new Schema( {
+    id: { type: String, required: true, unique: true },
+    firstName: { type: String },
+    lastName: { type: String },
+    email: { type: String, unique: true },
+    registrationDate: { type: String, default: Date.now() },
+    password: {type: String, required: true},
+    comments: { type: Array },
+    posts: { type: Array },
+} );
 
-module.exports = {
-  User,
-};
+module.exports = mongoose.model( "User", userSchema );

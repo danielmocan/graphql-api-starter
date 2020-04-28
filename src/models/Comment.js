@@ -1,36 +1,13 @@
-const comments = [
-    {
-        id: 1,
-        content: "This is the best Post",
-        author: 2,
-        post: 3,
-    },
-    {
-        id: 2,
-        content: "This is the best Post",
-        author: 2,
-        post: 4,
-    },
-];
-  
-class Comment {
-  static all() {
-    return comments;
-  }
+const mongoose = require( "mongoose" );
 
-  static findCommentsByPostId( postId ) {
-      return comments.filter( comment => comment.post == postId )
-  }
+const { Schema } = mongoose;
 
-  static findCommentsByAuthorId( authorId ) {
-    return comments.filter( comment => comment.author == authorId )
-  }
+const commentSchema = new Schema( {
+    id: { type: String, required: true, unique: true },
+    authorId: { type: String, required: true },
+    addedDate: { type: String, default: Date.now() },
+    postId: { type: String, required: true },
+    content: { type: String, required: true },
+} );
 
-  static findById( commentId ) {
-      return comments.find( comment => comment.id == commentId )
-  }
-}
-
-module.exports = {
-  Comment,
-};
+module.exports = mongoose.model( "Comment", commentSchema );

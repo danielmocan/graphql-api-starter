@@ -1,13 +1,19 @@
 const { ApolloServer, gql } = require("apollo-server");
+const { getUserFromToken } = require("./helpers/authorisation");
+require("./models/mongoose");
 const { typeDefs } = require("./typeDefs");
 const { resolvers } = require("./resolvers");
 
 const server = new ApolloServer({
     typeDefs,
     resolvers,
-    dataSources: ( ) => ({ 
-        database: () => "bla"
-    })
+    context: ({ req } ) => {
+        const token = req.headers.authorization || "";
+        const user = getUserFromToken(token);
+        return {
+            user
+        }
+    },
 });
 
 server.listen().then(({ url }) => {
