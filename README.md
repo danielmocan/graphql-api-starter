@@ -1,7 +1,5 @@
 # GraphQL Starter (WIP)
 
-
-
 ### GraphQL Server Starter using Apollo Server.
 
 * This is **Work In Progress**, the are some errors to be fixed
@@ -21,5 +19,7 @@ Start the project
 ```javascript
 npm start
 ```
-You can check the GraphQL Playground at `http://localhost:4000`.
+You can check the GraphQL Playground at `http://localhost:4000`
+
+
 
