@@ -2,13 +2,13 @@ const { User } = require( "../controllers/User");
 
 const userResolvers = {
     Query: {
-        users: () => User.all(),
-        user: (parent, args, context, info ) => {
+        getUsers: () => User.all(),
+        getUser: (parent, args, context, info ) => {
             return User.findById( args.id )
         }
     },
     Mutation: {
-        user(parent, args, context, info ){
+        addUser(parent, args, context, info ){
     
             return User.createUser({
                 firstName: args.firstName,

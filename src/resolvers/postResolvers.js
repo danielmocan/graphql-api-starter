@@ -4,8 +4,8 @@ const { Comment } = require("../controllers/Comment");
 
 const postResolvers = {
     Query: {
-        posts: () => Post.all(),
-        post: (parent, args, context, info) =>  {
+        getPosts: () => Post.all(),
+        getPost: (parent, args, context, info) =>  {
             return Post.findById( args.id )
         }
     },
@@ -33,7 +33,7 @@ const postResolvers = {
     },
 
     Mutation: { 
-        async post( parent, args, context, info) {
+        async addPost( parent, args, context, info) {
             const post = await Post.createPost({ title: args.title, content: args.content, author: context.user.id });
             await User.addPostId(post.id);
             return post;
