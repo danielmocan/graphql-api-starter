@@ -2,10 +2,32 @@ const { gql } = require("apollo-server");
 
 const mutation = gql`
     type Mutation {
-        addUser(firstName: String!, lastName: String!, email: String!, password: String!): User!
-        login(email: String!, password: String!):LoginResponse!
-        addPost(title: String!, content: String!): Post!
-        addComment(content: String!, postId: String!): Comment!,
+        addUser(user: UserInput): User!
+        login(loginData: LoginInput):LoginResponse!
+        addPost(post: PostInput): Post!
+        addComment(comment: CommentInput): Comment!,
+    }
+
+    input UserInput {
+        firstName: String!,
+        lastName: String!,
+        email: String!, 
+        password: String!
+    }
+
+    input LoginInput {
+        email: String,
+        password: String,
+    }
+
+    input PostInput {
+        title: String,
+        content: String,
+    }
+
+    input CommentInput {
+        content: String,
+        postId: String,
     }
 `;
 

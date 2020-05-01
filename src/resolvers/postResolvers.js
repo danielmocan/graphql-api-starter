@@ -34,7 +34,7 @@ const postResolvers = {
 
     Mutation: { 
         async addPost( parent, args, context, info) {
-            const post = await Post.createPost({ title: args.title, content: args.content, author: context.user.id });
+            const post = await Post.createPost({ ...args.post, author: context.user.id });
             await User.addPostId(post.id);
             return post;
         }

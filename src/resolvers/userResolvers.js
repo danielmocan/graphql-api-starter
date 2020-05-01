@@ -9,16 +9,10 @@ const userResolvers = {
     },
     Mutation: {
         addUser(parent, args, context, info ){
-    
-            return User.createUser({
-                firstName: args.firstName,
-                lastName: args.lastName,
-                email: args.email,
-                password: args.password,
-            })
+            return User.createUser(args.user)
         },
         login( parent, args, context, info) {
-            const user = User.login( args );
+            const user = User.login( args.loginData );
             if( user.error ) {
                 return user.error
             }

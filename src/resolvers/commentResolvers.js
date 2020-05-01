@@ -11,7 +11,7 @@ const commentResolvers = {
     },
     Mutation: { 
         async addComment( parent, args, context, info) {
-            const comment = await Comment.createComment({ postId: args.postId, content: args.content, authorId: context.user.id });
+            const comment = await Comment.createComment({ ...args.comment, authorId: context.user.id });
             await User.addCommentId(comment.id, context.user.id);
             await Post.addCommentId(comment.id, args.postId)
             return comment;
