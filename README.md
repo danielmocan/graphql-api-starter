@@ -21,5 +21,17 @@ npm start
 ```
 You can check the GraphQL Playground at `http://localhost:4000`
 
+Your database will be empty so lets create some records using the GraphQL Interface:
+
+```javascript
+mutation {
+  addUser(user: {firstName: "Daniel", lastName:"Mocan", email:"email@email.com", password:"SomePassword"}) {
+    id
+    firstName
+    lastName
+  }
+}
+```
+
 
 
