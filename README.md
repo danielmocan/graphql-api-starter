@@ -115,3 +115,4 @@ query {
 - [ ] Add Error handling
 - [ ] Document all the way all this is connected
 - [ ] Maybe move some of the filed resolvers to a general resolver
+- [ ] Add more comments in the code
