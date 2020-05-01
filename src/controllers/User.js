@@ -60,15 +60,13 @@ class User {
   }
   
   static async addPostId( postId, authorId ) {
-    const user = UserRepository.findOne({ id: authorId });
+    const user = await UserRepository.findOne({ id: authorId });
     const posts = [ ...user.posts, postId ];
     user.posts = posts;
     await user.save();
   }
   static async addCommentId( commentId, authorId ) {
     const user = await UserRepository.findOne({ id: authorId });
-    console.log("user ", user.comments );
-    console.log("commentId", commentId)
     const comments = [ ...user.comments, commentId ];
     user.comments = comments;
     await user.save();

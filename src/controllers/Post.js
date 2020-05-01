@@ -10,11 +10,11 @@ class Post {
   }
 
   static async findById( id ) {
-      return await PostRepository.findOne({id});
+    return await PostRepository.findOne({id});
   }
 
   static async findByAuthor( authorId ) {
-      return await PostRepository.findOne({ authorId });
+    return await PostRepository.find({ author: authorId });
   }
 
   static async findByCommentId( commentId ) {

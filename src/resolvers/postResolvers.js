@@ -38,7 +38,8 @@ const postResolvers = {
                 return null;
             }
             const post = await Post.createPost({ ...args.post, author: context.user.id });
-            await User.addPostId(post.id);
+            console.log("post", post);
+            await User.addPostId(post.id, context.user.id);
             return post;
         }
     }
