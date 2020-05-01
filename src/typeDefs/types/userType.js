@@ -9,8 +9,8 @@ const userType = gql`
         comments: [Comment]
     }
     type LoginResponse {
-        user: User!,
-        token: String!
+        user: User,
+        token: String
     }
 `;
 

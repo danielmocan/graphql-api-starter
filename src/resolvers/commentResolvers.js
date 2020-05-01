@@ -11,6 +11,9 @@ const commentResolvers = {
     },
     Mutation: { 
         async addComment( parent, args, context, info) {
+            if( !context.loggedIn ) {
+                return null;
+            }
             const comment = await Comment.createComment({ ...args.comment, authorId: context.user.id });
             await User.addCommentId(comment.id, context.user.id);
             await Post.addCommentId(comment.id, args.postId)

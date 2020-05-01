@@ -34,6 +34,9 @@ const postResolvers = {
 
     Mutation: { 
         async addPost( parent, args, context, info) {
+            if( !context.loggedIn ) {
+                return null;
+            }
             const post = await Post.createPost({ ...args.post, author: context.user.id });
             await User.addPostId(post.id);
             return post;
