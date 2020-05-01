@@ -5,8 +5,8 @@ const userType = gql`
         id: ID!,
         firstName: String
         lastName: String
-        posts: [Post!]!
-        comments: [Comment!]!
+        posts: [Post]
+        comments: [Comment]
     }
     type LoginResponse {
         user: User!,

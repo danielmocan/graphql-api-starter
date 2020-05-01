@@ -9,8 +9,8 @@ const userSchema = new Schema( {
     email: { type: String, unique: true },
     registrationDate: { type: String, default: Date.now() },
     password: {type: String, required: true},
-    comments: { type: Array },
-    posts: { type: Array },
+    comments: { type: Array, default: []},
+    posts: { type: Array, default:[] },
 } );
 
 module.exports = mongoose.model( "User", userSchema );

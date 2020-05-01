@@ -8,7 +8,7 @@ const postSchema = new Schema( {
     title: { type: String, requred: true },
     content: { type: String, required: true },
     addedDate: { type: String, default: Date.now() },
-    comments: { type: Array },
+    comments: { type: Array, default:[] },
 } );
 
 module.exports = mongoose.model( "Post", postSchema );

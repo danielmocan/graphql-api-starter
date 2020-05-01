@@ -22,7 +22,6 @@ const userResolvers = {
             if( user.error ) {
                 return user.error
             }
-            // context.user = user;
             return user;
         }
     }
