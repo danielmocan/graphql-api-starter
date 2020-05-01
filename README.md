@@ -23,7 +23,7 @@ You can check the GraphQL Playground at `http://localhost:4000`
 
 Your database will be empty so lets create some records using the GraphQL Interface:
 
-*Adding a user*
+### Adding a user
 
 ```javascript
 mutation {
@@ -34,7 +34,7 @@ mutation {
   }
 }
 ```
-*Login*
+### Login
 Only user that are logged in are allowed to add post or comments
 
 ```javascript
@@ -59,7 +59,7 @@ In the `Http Headers` tab add the authorization header like this:
 ```
 Now that we have the token and we send it back to the graphql api, we can create a post. As a side note you can check `server.js` we check if the token exists, check and get the loggedin user's details.
 
-*Adding a post*
+### Adding a post
 ```javascript
 mutation {
   addPost(post:{ title: "Our first Post", content: "Hello World! This is the content of the post"}) {
@@ -69,6 +69,7 @@ mutation {
   }
 }
 ```
+### Query of Posts
 We can now query for the posts.
 
 ```javascript
