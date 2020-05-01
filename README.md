@@ -1,6 +1,6 @@
-# GraphQL Starter (WIP)
+# GraphQL API Starter
 
-### GraphQL Server Starter using Apollo Server.
+### GraphQL API Starter using Node, Apollo GraphQL Server and MongoDB.
 
 * This is **Work In Progress**, the are some errors to be fixed
 
