@@ -111,6 +111,7 @@ query {
 
 
 #### To Do List
+- [ ] Decouple controller from any database/moongoose dependency
 - [ ] Add validation for fields
 - [ ] Add Error handling
 - [ ] Document all the way all this is connected
