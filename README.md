@@ -57,7 +57,7 @@ In the `Http Headers` tab add the authorization header like this:
   "authorization": "Add here the token that you received at logged in (previous step)"
 }
 ```
-Now that we have the token and we send it back to the graphql api, we can create a post. As a side note you can check `server.js` we check if the token exists, check and get the loggedin user's details.
+Now that we have the token and we send it back to the graphql api, we can create a post. As a side note you can check `server.js` we check if the token exists, if its valid and get the logged in user's details.
 
 ### Adding a post
 ```javascript
