@@ -1,29 +1,29 @@
 const PostRepository = require('../repositories/postRepositories');
+
 class Post {
-  static async all() {
-    return await PostRepository.getAllPost();
+  static all() {
+    return PostRepository.getAllPost();
   }
 
-  static async findById( id ) {
-    return await PostRepository.findPostById(id);
+  static findById(id) {
+    return PostRepository.findPostById(id);
   }
 
-  static async findByAuthor( authorId ) {
-    return await PostRepository.findPostByAuthorId(authorId);
+  static findByAuthor(authorId) {
+    return PostRepository.findPostByAuthorId(authorId);
   }
 
-  static async findByCommentId( commentId ) {
-    return await PostRepository.findPostByCommentId( commentId );
+  static findByCommentId(commentId) {
+    return PostRepository.findPostByCommentId(commentId);
   }
 
-  static async createPost( post ) {
-    return  await PostRepository(post);
+  static createPost(post) {
+    return PostRepository(post);
   }
 
-  static async addCommentId( commentId, postId ) {
-    PostRepository.addCommentId( commentId, postId );
+  static addCommentId(commentId, postId) {
+    PostRepository.addCommentId(commentId, postId);
   }
-
 }
 
 module.exports = {

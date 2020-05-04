@@ -1,4 +1,4 @@
-const { gql } = require("apollo-server");
+const { gql } = require('apollo-server');
 
 const mutation = gql`
     type Mutation {
@@ -32,5 +32,5 @@ const mutation = gql`
 `;
 
 module.exports = {
-    mutation,
+  mutation,
 };
