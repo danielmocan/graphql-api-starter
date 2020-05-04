@@ -1,50 +1,28 @@
-const mongoose = require("mongoose");
-const bcrypt = require( "bcrypt" );
-const { v4 } =  require('uuid');
 const { createToken } = require("../helpers/authorisation");
-const uuid = v4;
-
-const encryptPassword = password => {
-  const saltRounds = 10;
-  const hash = bcrypt.hashSync( password, saltRounds );
-  return hash;
-};
-
-const UserRepository = mongoose.model('User');
+const UserRepository = require("../repositories/userRepository");
 
 class User {
   static async all() {
-    return await UserRepository.find({});
+    return await UserRepository.getAllUsers();
   }
 
   static async findById( id ) {
-      return await UserRepository.findOne({ id });
+      return await UserRepository.findUserById( id );
   }
 
   static async findByCommentId( commentId ) {
-      return await UserRepository.findOne( { comments: { "$in": [ commentId ] } } )
+      return await UserRepository.findUserByCommentId( commentId );
   }
 
-  static async createUser( { email, password, firstName, lastName } ) {
-      const encryptedPassword = encryptPassword( password );
-      const id = uuid();
-      const user = new UserRepository({  email, firstName, lastName, id, password: encryptedPassword });
-      return await user.save();
+  static async createUser( user ) {
+      return await UserRepository.createUser( user );
   }
   
   static async login( { email, password } ) {
-      const user = await UserRepository.findOne({ email });
+      const user = await UserRepository.login( email, password );
       if( !user ) {
           return {
             error: "Something when wrong, please check your details and try again" 
-          }
-      }
-
-      const isValidPassword = bcrypt.compareSync( password, user.password );
-
-      if( !isValidPassword ) {
-          return {
-            error:"Something when wrong, please check your details and try again" 
           }
       }
 
@@ -60,16 +38,10 @@ class User {
   }
   
   static async addPostId( postId, authorId ) {
-    const user = await UserRepository.findOne({ id: authorId });
-    const posts = [ ...user.posts, postId ];
-    user.posts = posts;
-    await user.save();
+    UserRepository.addPostId(postId, authorId);
   }
   static async addCommentId( commentId, authorId ) {
-    const user = await UserRepository.findOne({ id: authorId });
-    const comments = [ ...user.comments, commentId ];
-    user.comments = comments;
-    await user.save();
+    UserRepository.addCommentId(commentId, authorId);
   }
 }
 

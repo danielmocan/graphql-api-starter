@@ -1,33 +1,23 @@
-const mongoose = require("mongoose");
-const { v4 } =  require('uuid');
-const uuid = v4;
-
-const CommentRepository = mongoose.model('Comment');
-
+const CommentRepository = require('../repositories/commentRepository.js');
 class Comment {
   static async all() {
-    return await CommentRepository.find({})
+    return await CommentRepository.getAllComments();
   }
 
   static async findCommentsByPostId( postId ) {
-      const comments = await CommentRepository.find({ postId });
-      return comments;
+      return await CommentRepository.findCommentsByPostId( postId );
   }
 
   static async findCommentsByAuthorId( authorId ) {
-    const comments = await CommentRepository.find({ authorId });
-    return comments;
+    return await CommentRepository.findCommentsByAuthorId( authorId );
   }
 
   static async findById( commentId ) {
-    const comments = await CommentRepository.findOne({ id: commentId });
-      return comments;
+    return await CommentRepository.findPostById( commentId );
   }
 
-  static async createComment( { content, postId, authorId } ) {
-    const comment = new CommentRepository({ id: uuid(), content, postId, authorId });
-    
-    return await comment.save();
+  static async createComment( comment ) {
+    return await CommentRepository.createComment( comment );
   }
 }
 
