@@ -1,23 +1,24 @@
 const CommentRepository = require('../repositories/commentRepository.js');
+
 class Comment {
-  static async all() {
-    return await CommentRepository.getAllComments();
+  static all() {
+    return CommentRepository.getAllComments();
   }
 
-  static async findCommentsByPostId( postId ) {
-      return await CommentRepository.findCommentsByPostId( postId );
+  static findCommentsByPostId(postId) {
+    return CommentRepository.findCommentsByPostId(postId);
   }
 
-  static async findCommentsByAuthorId( authorId ) {
-    return await CommentRepository.findCommentsByAuthorId( authorId );
+  static findCommentsByAuthorId(authorId) {
+    return CommentRepository.findCommentsByAuthorId(authorId);
   }
 
-  static async findById( commentId ) {
-    return await CommentRepository.findPostById( commentId );
+  static findById(commentId) {
+    return CommentRepository.findPostById(commentId);
   }
 
-  static async createComment( comment ) {
-    return await CommentRepository.createComment( comment );
+  static createComment(comment) {
+    return CommentRepository.createComment(comment);
   }
 }
 

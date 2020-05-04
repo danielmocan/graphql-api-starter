@@ -1,4 +1,4 @@
-const { gql } = require("apollo-server");
+const { gql } = require('apollo-server');
 
 const postType = gql`
     type Post {
@@ -11,5 +11,5 @@ const postType = gql`
 `;
 
 module.exports = {
-    postType,
-}
+  postType,
+};
