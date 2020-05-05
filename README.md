@@ -2,8 +2,6 @@
 
 ### GraphQL API Starter using Node, Apollo GraphQL Server and MongoDB.
 
-* This is **Work In Progress**, the are some errors to be fixed
-
 The starter simulates a backend server for a blog. You have authors, posts and comments all tied together, this allows us to go in depth with our GraphQL Queries.
 
 ### Prerequisites:
