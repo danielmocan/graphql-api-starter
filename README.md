@@ -111,9 +111,9 @@ query {
 
 
 #### To Do List
-- [ ] Decouple controller from any database/moongoose dependency
+- [X] Decouple controller from any database/moongoose dependency
 - [ ] Add validation for fields
 - [ ] Add Error handling
-- [ ] Document all the way all this is connected
+- [ ] Document how things are connected
 - [ ] Maybe move some of the filed resolvers to a general resolver
 - [ ] Add more comments in the code
